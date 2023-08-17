@@ -4,7 +4,6 @@
 #    import guess_number
 #else :
 #    print("檔案存取錯誤")
-say = print
 
 say("Hello")
 
