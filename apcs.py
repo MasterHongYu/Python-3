@@ -1,5 +1,5 @@
 #第一題
-'''
+"""
 n = int(input())
 all = [int(i) for i in input().split()]
 print(" ".join([str(i) for i in sorted(all)]))
@@ -24,7 +24,7 @@ try :
     print(min(case2))
 except :
     print("worst case")
-'''
+"""
 #第二題
 
     
