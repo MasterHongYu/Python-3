@@ -10,7 +10,7 @@ def guess_number_game ():
     
     def guess(k,d) :
         try :
-            guess = [int(i) for i in input(f"請輸入{d}位數字，並且每個數字間都要有空格，不可輸入重複數字，你還有{10 - k}次機會：").split()]
+            guess = [int(i) for i in input(f"請輸入{d}位數字，並且每個數字間都要有空格，不可輸入重複數字，你還有{(2 * d) + 2 - k}次機會：").split()]
             if len(guess) == d and len(set(guess)) == d and (0 <= i < 10 for i in guess) :
                 return(guess)
             else : 
@@ -44,11 +44,11 @@ def guess_number_game ():
             try : 
                 digital = int(input("你想猜幾位數字？(最少3位數，最多7位數)："))
             except : 
-                None
+                Error()
+                continue
             if 3 <= digital <= 7 : 
                 break
             Error()
-            continue
         return digital
 
     def main():
@@ -56,7 +56,7 @@ def guess_number_game ():
         n = digi() 
         ans,times = answer(n),0
         #print(ans)
-        while times < 10:
+        while times < (2 * n + 2):
             check = guess(times,n)
             if check == "?" : 
                 continue
