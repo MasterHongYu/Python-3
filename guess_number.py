@@ -4,11 +4,11 @@ def guess_number_game ():
     def digi():
         while True :
             try : 
-                digital = int(input("你想猜幾位數字？(最少3位數，最多7位數)："))
+                digital = int(input("你想猜幾位數字？(最少2位數，最多8位數)："))
             except : 
                 Error()
                 continue
-            if 3 <= digital <= 7 : 
+            if 2 <= digital <= 8 : 
                 break
             Error()
         return digital
