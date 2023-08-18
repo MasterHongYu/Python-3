@@ -45,10 +45,10 @@ def Guess_number_100 ():
         print("100 game")
         d = digi()
         ans,min,max,times= anwser(d),1,pow(10,d) - 1,0
-        while times < 2 * d + 4 :
+        while times < 4 * d - 2 :
             cheak = 0
             try :
-                n = int(input(f"請輸入{min}~{max}範圍內的數字，你還有{2 * d + 4-times}次機會："))
+                n = int(input(f"請輸入{min}~{max}範圍內的數字，你還有{4 * d - 2 - times}次機會："))
                 min,max,cheak = contract(n,min,max,ans,d)
                 if cheak == 1 :
                     continue
