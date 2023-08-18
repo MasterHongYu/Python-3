@@ -5,13 +5,11 @@ def Guess_number_1A2B ():
         while True :
             try : 
                 digital = int(input("你想猜幾位數字？(最少2位數，最多8位數)："))
+                if 2 <= digital <= 8 : 
+                    return digital
             except : 
                 Error()
-                continue
-            if 2 <= digital <= 8 : 
-                break
             Error()
-        return digital
     # 生成答案的函數
     def answer(n):
         import random as ran
