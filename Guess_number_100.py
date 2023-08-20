@@ -5,8 +5,8 @@ def Guess_number_100 ():
     def digi():
         while True :
             try :
-                digit = int(input("你想猜的數字範圍要是幾位數?(最少2位數，最多6位數)："))
-                if 2 <= digit <= 6 :
+                digit = int(input("你想猜的數字範圍要是幾位數?(最少2位數，最多10位數)："))
+                if 2 <= digit <= 10 :
                     return digit
             except :
                 None
@@ -47,6 +47,7 @@ def Guess_number_100 ():
                 times += 1
                 if cheak == 2 :
                     print(f"你贏了，總共花了{times}次")
+                    rank(times=times,d=d)
                     break
                 if times < 4 * d - 2 :
                     print(f"{min} < 答案 < {max}\n")
@@ -60,9 +61,22 @@ def Guess_number_100 ():
         if input("要再玩一次嗎？如果要的話請輸入\"again\"，不用的話，請輸入除了\"again\"以外的值：\n") == "again" : 
             return "again"
         print("Bye:>")
-    
+    # 給予玩家等級的函數
+    def rank(times,d) :
+        if times <= 1.1 * d  :
+            print("Rank：S\n")
+        elif times <= 1.5 * d  :
+            print("Rank：A\n")
+        elif times <= 2.0 * d  :
+            print("Rank：B\n")
+        elif (times <= 2.5 * d and d <= 6) or (times <= 3 * d and d >= 7) :
+            print("Rank：C\n")
+        else :
+            print("Rank：D\n")
+            
     while main() == "again" :
         print()
 
+    
 Guess_number_100 ()
     
