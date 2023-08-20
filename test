@@ -38,4 +38,8 @@ while True :
 #    while n in ans:
 #        n = random.randint(0,9) 
 #    ans[i]= n  
-
+a = list(input())
+for i in a:
+    if i == " ":
+        a.remove(i)
+print(a)
