@@ -25,9 +25,9 @@ def Guess_number_100 ():
                 Error()
                 cheak = 1
             if player_ans > min and player_ans < ans:
-                min,cheak = player_ans,0
+                min = player_ans
             if player_ans < max and player_ans > ans :
-                max,cheak = player_ans,0
+                max = player_ans
             return min,max,cheak
         else :
             Error()
@@ -46,7 +46,6 @@ def Guess_number_100 ():
         d = digi()
         ans,min,max,times= anwser(d),1,pow(10,d) - 1,0
         while times < 4 * d - 2 :
-            cheak = 0
             try :
                 n = int(input(f"請輸入{min}~{max}範圍內的數字，你還有{4 * d - 2 - times}次機會："))
                 min,max,cheak = contract(n,min,max,ans,d)
@@ -56,7 +55,8 @@ def Guess_number_100 ():
                     times += 1
                     print(f"你贏了，總共花了{times}次")
                     break
-                print(f"{min} ≤ 答案 ≤ {max}\n")
+                if times < 4 * d - 2 :
+                    print(f"{min} < 答案 < {max}\n")
                 times += 1
             except :
                 Error()
