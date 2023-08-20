@@ -1,6 +1,7 @@
 def Guess_number_1A2B ():
 
     import random
+    import time
     # 確認位數的函數
     def digi():
         while True :
@@ -15,11 +16,9 @@ def Guess_number_1A2B ():
         while True :
             input_guess = input(f"請輸入{digi_guess}位數字，你還有{(2 * digi_guess) + 4 - times_guess}次機會：")
             try :
-                guess = [int(i) for i in input_guess.split()]
+                guess = [int(i) for i in list(input_guess) if i != " "]
                 if len(guess) == len(set(guess)) == digi_guess and all(0 <= i < 10 for i in guess) :
                     return guess
-                elif len(list(input_guess)) == len(set(list(input_guess))) == digi_guess :
-                    return [int(i) for i in list(input_guess)]
             except :
                 if input_guess == "F" :
                     print("您已放棄本回合的遊戲。")
@@ -35,21 +34,29 @@ def Guess_number_1A2B ():
                 Bn += 1 
         if An == digi_AnBn :
             print(f"你贏了!總共花了{times_AnBn}次。") 
+            time.sleep(1)
             rank(times = times_AnBn, d = digi_AnBn)
+            time.sleep(1)
             return "win"
-        print(f"{An} A {Bn} B\n")
+        print(f"第{times_AnBn}次猜測：{An} A {Bn} B\n")
     # 錯誤指示的函數
     def Error ():
         print(f"輸入格式錯誤，或是輸入位數不正確，請再輸入一次，謝謝。\n")
+        time.sleep(0.5)
     # 運行遊戲流程的函數
     def main():
         print("1A2B Game")
-        d,times = digi(),0 
-        print(f"\n遊戲規則：\n一、輸入的數字格式為2種：\n    (1)連續的數字[例：1234]\n    (2)以空格隔開的數字[例：1 2 3 4]。\n二、不可輸入重複數字。\n三、答案的數字範圍在0~9，並且不會有重複數字。\n四、若無遵照規則指示操作，則會跳出錯誤警示，不過程式碼不會崩潰，請放心。\n五、猜測總次數為{2 * d + 4}次。\n六、如果你想放棄本回合，請輸入\"F\"。\n")
+        d,times,list = digi(),0,[]
+        print(f"\n遊戲規則：\n一、輸入的數字格式：只能包含阿拉伯數字與空格，且阿拉伯數字的數量要與所猜之位數相等。\n二、不可輸入重複數字。\n三、答案的數字範圍在0~9，並且不會有重複數字。\n四、若無遵照規則指示操作，則會跳出錯誤警示，不過程式碼不會崩潰，請放心。\n五、猜測總次數為{2 * d + 4}次。\n六、如果你想放棄本回合，請輸入\"F\"。\n")
         ans = random.sample(range(10),d)
         #print(ans)
         while times < (2 * d + 4):
             player_guess = guess(times_guess = times, digi_guess = d)
+            if player_guess in list :
+                print("這個數字你輸入過了，稍微冷靜一下。\n")
+                time.sleep(1)
+                continue
+            list.append(player_guess)
             times += 1
             if player_guess == "F" or AnBn(playerGuess = player_guess, ans = ans, digi_AnBn = d, times_AnBn = times) == "win" :
                 break
@@ -74,7 +81,8 @@ def Guess_number_1A2B ():
     while main() == "again" :
         print()
 
-Guess_number_1A2B()
+if __name__ == '__main__' :
+    Guess_number_1A2B()
 
     
 
