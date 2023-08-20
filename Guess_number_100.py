@@ -1,5 +1,7 @@
 def Guess_number_100 ():
 
+    import random
+    # 確認位數的函數
     def digi():
         while True :
             try :
@@ -9,14 +11,11 @@ def Guess_number_100 ():
                 Error()
             except :
                 Error()
-
+    # 生成答案的函數
     def anwser(d) :
-        import random as ran 
-        ans = ran.randint(1,pow(10,d) - 1)
-        #print(ans)
-        return ans
-    
-    def contract(player_ans,min,max,ans,digi_contract) :
+        return random.randint(1,pow(10,d) - 1)
+    # 執行大小比較運算的函數
+    def contract(min,max,ans,player_ans,digi_contract) :
         if 1 <= player_ans <= pow(10,digi_contract) - 1 :
             cheak = 0
             if player_ans == ans :
@@ -33,22 +32,24 @@ def Guess_number_100 ():
             Error()
             cheak = 1
             return min,max,cheak
-
+    # 錯誤指示的函數
     def Error():
         print(f"輸入格式錯誤，或是輸入位數不正確，請再輸入一次，謝謝。\n")
-    
+    # 確認玩家是否要再玩一回合的函數
     def play_again():
         if input("要再玩一次嗎？如果要的話請輸入\"again\"，不用的話，請輸入除了\"again\"以外的值：\n") == "again" :
             return "again"
-        
+    # 運行遊戲流程的函數
     def main():
         print("100 game")
         d = digi()
-        ans,min,max,times= anwser(d),1,pow(10,d) - 1,0
+        print(f"\n遊戲規則：\n一、輸入的數字格式為連續的數字[例：10、123]\n二、請輸入題目範圍內的數字。\n三、若無遵照規則指示操作，則會跳出錯誤警示，不過程式碼不會崩潰，請放心。\n四、猜測總次數為{4 * d - 2}次。\n五、如果你想放棄本回合，請輸入\"F\"。\n")
+        ans,min,max,times= anwser(d = d),1,pow(10,d) - 1,0
         while times < 4 * d - 2 :
+            n = (input(f"請輸入{min}~{max}範圍內的數字，你還有{4 * d - 2 - times}次機會："))
             try :
-                n = int(input(f"請輸入{min}~{max}範圍內的數字，你還有{4 * d - 2 - times}次機會："))
-                min,max,cheak = contract(n,min,max,ans,d)
+                n = int(n)
+                min,max,cheak = contract(min = min, max = max, ans = ans, player_ans = n, digi_contract = d)
                 if cheak == 1 :
                     continue
                 if cheak == 2 :
@@ -59,15 +60,21 @@ def Guess_number_100 ():
                     print(f"{min} < 答案 < {max}\n")
                 times += 1
             except :
+                if n == "F" :
+                    print("您已放棄本回合的遊戲。")
+                    break
                 Error()
         else :
             print(f"你輸了，答案是{ans}")
 
         if (again := play_again()) == "again" : 
-            main()
+            return "again"
         else :
             print("Bye:>")
+    
+    while (a := main()) == "again" :
+        print()
+        continue
 
-    main()
 Guess_number_100 ()
     
