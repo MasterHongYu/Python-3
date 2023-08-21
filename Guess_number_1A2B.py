@@ -8,8 +8,8 @@ def Guess_number_1A2B ():
                 digital = int(input("你想猜幾位數字？(最少2位數，最多10位數，建議2-5位數)："))
                 if 2 <= digital <= 10 : 
                     return digital
-            except : None
-            Error()
+                Error(2)
+            except : Error(1)
     # 判斷玩家所輸入的答案格式，是否為正確的函數
     def guess(times_guess,digi_guess) :
         while True :
@@ -18,11 +18,12 @@ def Guess_number_1A2B ():
                 guess = [int(i) for i in list(input_guess) if i != " "]
                 if len(guess) == len(set(guess)) == digi_guess and all(0 <= i < 10 for i in guess) :
                     return guess
+                Error(2)
             except :
                 if input_guess == "F" :
                     print("您已放棄本回合的遊戲。")
                     return input_guess
-            Error()
+                Error(1)
     # 執行1A2B運算的函數
     def AnBn(playerGuess,ans,digi_AnBn,times_AnBn,start_time):
         An,Bn = 0,0
@@ -38,8 +39,9 @@ def Guess_number_1A2B ():
             return "win"
         print(f"第{times_AnBn}次猜測：{An} A {Bn} B\n")
     # 錯誤指示的函數
-    def Error ():
-        print(f"輸入格式錯誤，或是輸入位數不正確，請再輸入一次，謝謝。\n");Time ()
+    def Error (code):
+        if code == 1 : print(f"不能輸入文字，只能輸入阿拉伯數字與空格，請再輸入一次，謝謝。\n");Time ()
+        elif code == 2 : print(f"輸入位數不正確或是輸入重複數字，請再輸入一次，謝謝。\n");Time ()
     # 運行遊戲流程的函數
     def main():
         print("1A2B Game")
