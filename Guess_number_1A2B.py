@@ -24,7 +24,7 @@ def Guess_number_1A2B ():
                     return input_guess
             Error()
     # 執行1A2B運算的函數
-    def AnBn(playerGuess,ans,digi_AnBn,times_AnBn):
+    def AnBn(playerGuess,ans,digi_AnBn,times_AnBn,start_time):
         An,Bn = 0,0
         for i in range(digi_AnBn):
             if playerGuess[i] == ans[i] : 
@@ -32,20 +32,21 @@ def Guess_number_1A2B ():
             elif playerGuess[i] in ans : 
                 Bn += 1 
         if An == digi_AnBn :
-            print(f"你贏了!總共花了{times_AnBn}次。") 
-            Time ();rank(times = times_AnBn, d = digi_AnBn);Time ()
+            end_time = time.time();all_time = end_time - start_time
+            print(f"你贏了!總共花了{times_AnBn}次，時間共計{round(all_time) // 60}分{round(all_time) % 60}秒。") 
+            Time ();rank(times = times_AnBn, d = digi_AnBn, time_rank = all_time);Time ()
             return "win"
         print(f"第{times_AnBn}次猜測：{An} A {Bn} B\n")
     # 錯誤指示的函數
     def Error ():
-        print(f"輸入格式錯誤，或是輸入位數不正確，請再輸入一次，謝謝。\n")
-        Time ()
+        print(f"輸入格式錯誤，或是輸入位數不正確，請再輸入一次，謝謝。\n");Time ()
     # 運行遊戲流程的函數
     def main():
         print("1A2B Game")
         d,times,list = digi(),0,[]
-        print(f"\n遊戲規則：\n一、輸入的數字格式：只能包含阿拉伯數字與空格，且阿拉伯數字的數量要與所猜之位數相等。\n二、不可輸入重複數字。\n三、答案的數字範圍在0~9，並且不會有重複數字。\n四、若無遵照規則指示操作，則會跳出錯誤警示，不過程式碼不會崩潰，請放心。\n五、猜測總次數為{2 * d + 4}次。\n六、如果你想放棄本回合，請輸入\"F\"。\n")
+        print(f"\n遊戲規則：\n一、輸入的數字格式：只能包含阿拉伯數字與空格，且阿拉伯數字的數量要與所猜之位數相等。\n二、不可輸入重複數字。\n三、答案的數字範圍在0~9，並且不會有重複數字。\n四、若無遵照規則指示操作，則會跳出錯誤警示，不過程式碼不會崩潰，請放心。\n五、猜測總次數為{2 * d + 4}次。\n六、如果你想放棄本回合，請輸入\"F\"。\n#提示：若想得到越高的Rank(最高為S級，而後依序為A級、B級、C級、D級)，請用越少的次數或是越少的時間來猜對數字。\n")
         Time ();ans = random.sample(range(10),d)
+        start = time.time()
         #print(ans)
         while times < (2 * d + 4):
             player_guess = guess(times_guess = times, digi_guess = d)
@@ -55,24 +56,24 @@ def Guess_number_1A2B ():
                 continue
             list.append(player_guess)
             times += 1
-            if player_guess == "F" or AnBn(playerGuess = player_guess, ans = ans, digi_AnBn = d, times_AnBn = times) == "win" :
+            if player_guess == "F" or AnBn(playerGuess = player_guess, ans = ans, digi_AnBn = d, times_AnBn = times,start_time = start) == "win" :
                 if player_guess == "F" :
                     Time ();print(f"正確號碼為{''.join([str(i) for i in ans])}。");Time ()
                 break
         else : 
-            print(f"遊戲結束，你輸了，正確號碼為{''.join([str(i) for i in ans])}，太可惜了。\n")
+            print(f"遊戲結束，你輸了，正確號碼為{''.join([str(i) for i in ans])}，太可惜了。\n");Time ()
         if input("要再玩一次嗎？如果要的話請輸入\"again\"，不用的話，請輸入除了\"again\"以外的值：\n") == "again" : 
             return "again"
         print("Bye:>")
     # 給予玩家等級的函數
-    def rank(times,d) :
-        if times <= 1.1 * d  :
+    def rank(times,d,time_rank) :
+        if times <= 1.1 * d or time_rank <= 10 :
             print("Rank：S\n")
-        elif times <= 1.5 * d  :
+        elif times <= 1.5 * d  or time_rank <= 20:
             print("Rank：A\n")
-        elif times <= 2.0 * d  :
+        elif times <= 2.0 * d  or time_rank <= 30:
             print("Rank：B\n")
-        elif (times <= 2.5 * d and d <= 6) or (times <= 2.3 * d and d >= 7) :
+        elif (times <= 2.5 * d and d <= 6) or (times <= 2.3 * d and d >= 7) or time_rank <= 50:
             print("Rank：C\n")
         else :
             print("Rank：D\n")
