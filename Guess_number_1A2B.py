@@ -69,17 +69,17 @@ def Guess_number_1A2B ():
         print("Bye:>")
     # 給予玩家等級的函數
     def rank(times,d,time_rank) :
-        if times <= 1.1 * d or time_rank <= 10 :
+        if times <= 1.1 * d or time_rank <= 5 * d :
             print("Rank：S\n")
-        elif times <= 1.5 * d  or time_rank <= 20:
+        elif times <= 1.5 * d  or time_rank <= 10 * d:
             print("Rank：A\n")
-        elif times <= 2.0 * d  or time_rank <= 30:
+        elif times <= 2.0 * d  or time_rank <= 15 * d:
             print("Rank：B\n")
-        elif (times <= 2.5 * d and d <= 6) or (times <= 2.3 * d and d >= 7) or time_rank <= 50:
+        elif (times <= 2.5 * d and d <= 6) or (times <= 2.3 * d and d >= 7) or time_rank <= 25 * d:
             print("Rank：C\n")
         else :
             print("Rank：D\n")
-    
+    # 時間等待的函數
     def Time () :
         time.sleep(0.25)
     
