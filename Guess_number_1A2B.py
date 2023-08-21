@@ -1,7 +1,6 @@
 def Guess_number_1A2B ():
 
-    import random
-    import time
+    import random;import time
     # 確認位數的函數
     def digi():
         while True :
@@ -34,31 +33,31 @@ def Guess_number_1A2B ():
                 Bn += 1 
         if An == digi_AnBn :
             print(f"你贏了!總共花了{times_AnBn}次。") 
-            time.sleep(1)
-            rank(times = times_AnBn, d = digi_AnBn)
-            time.sleep(1)
+            Time ();rank(times = times_AnBn, d = digi_AnBn);Time ()
             return "win"
         print(f"第{times_AnBn}次猜測：{An} A {Bn} B\n")
     # 錯誤指示的函數
     def Error ():
         print(f"輸入格式錯誤，或是輸入位數不正確，請再輸入一次，謝謝。\n")
-        time.sleep(0.5)
+        Time ()
     # 運行遊戲流程的函數
     def main():
         print("1A2B Game")
         d,times,list = digi(),0,[]
         print(f"\n遊戲規則：\n一、輸入的數字格式：只能包含阿拉伯數字與空格，且阿拉伯數字的數量要與所猜之位數相等。\n二、不可輸入重複數字。\n三、答案的數字範圍在0~9，並且不會有重複數字。\n四、若無遵照規則指示操作，則會跳出錯誤警示，不過程式碼不會崩潰，請放心。\n五、猜測總次數為{2 * d + 4}次。\n六、如果你想放棄本回合，請輸入\"F\"。\n")
-        ans = random.sample(range(10),d)
+        Time ();ans = random.sample(range(10),d)
         #print(ans)
         while times < (2 * d + 4):
             player_guess = guess(times_guess = times, digi_guess = d)
             if player_guess in list :
-                print("這個數字你輸入過了，稍微冷靜一下。\n")
-                time.sleep(1)
+                print("這個數字你猜過了，稍微冷靜一下。\n")
+                Time ()
                 continue
             list.append(player_guess)
             times += 1
             if player_guess == "F" or AnBn(playerGuess = player_guess, ans = ans, digi_AnBn = d, times_AnBn = times) == "win" :
+                if player_guess == "F" :
+                    Time ();print(f"正確號碼為{''.join([str(i) for i in ans])}。");Time ()
                 break
         else : 
             print(f"遊戲結束，你輸了，正確號碼為{''.join([str(i) for i in ans])}，太可惜了。\n")
@@ -77,6 +76,9 @@ def Guess_number_1A2B ():
             print("Rank：C\n")
         else :
             print("Rank：D\n")
+    
+    def Time () :
+        time.sleep(0.25)
     
     while main() == "again" :
         print()
