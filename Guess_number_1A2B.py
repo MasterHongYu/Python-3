@@ -6,7 +6,7 @@ def Guess_number_1A2B ():
     def digi():
         while True :
             try : 
-                digital = int(input("你想猜幾位數字？(最少2位數，最多10位數)："))
+                digital = int(input("你想猜幾位數字？(最少2位數，最多10位數，建議2-5位數)："))
                 if 2 <= digital <= 10 : 
                     return digital
             except : None
