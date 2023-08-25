@@ -53,8 +53,7 @@ def Guess_number_1A2B ():
         while times < (2 * d + 4):
             player_guess = guess(times_guess = times, digi_guess = d)
             if player_guess in list :
-                print("這個數字你猜過了，稍微冷靜一下。\n")
-                Time ()
+                print("這個數字你猜過了，稍微冷靜一下。\n");Time ()
                 continue
             list.append(player_guess)
             times += 1
