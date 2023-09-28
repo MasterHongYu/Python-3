@@ -77,6 +77,6 @@ def Guess_number_100 ():
     while main() == "again" :
         print()
 
-    
-Guess_number_100 ()
+if __name__ == "__main__" :
+    Guess_number_100 ()
     

@@ -85,7 +85,8 @@ def Guess_number_1A2B ():
     while main() == "again" :
         print()
 
-Guess_number_1A2B()
+if __name__ == "__main__" :
+    Guess_number_1A2B()
 
     
 
