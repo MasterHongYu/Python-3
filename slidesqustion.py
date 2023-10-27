@@ -1,3 +1,4 @@
+
 class Search:
 
     def __init__(self) :
@@ -34,25 +35,27 @@ print(a.Binary_Search())
 
 #---------------
 
-電話號碼 = { 
+電話區碼 = { 
     "臺北" : 2 , 
     "桃園" : 3 , 
     "新北" : 2 , 
     "新竹" : 3 , 
     "苗栗" : 37 , 
     "臺中" : 4 , 
+    "雲林" : 5 ,
     "宜蘭" : 3 , 
-    "高雄" : 7
+    "高雄" : 7 ,
+    "彰化" : 4 ,
+    "花蓮" : 3 ,
       }
 def a(data,n):
     for key in data.keys():
         if key == n :
-            print(f"{n}的電話號碼為0{data[key]}。")
-            return None
-    print("找不到該筆資料。")
-a(電話號碼,"臺中")
+            return f"{n}的電話區碼為0{data[key]}。"
+    return "找不到該筆資料。"
+print(a(電話區碼,"臺中"))
 
-#---------------
+#----------------
 
 print(' '.join([str(i) for i in [int(i) for i in range(1,119)]]))
 
