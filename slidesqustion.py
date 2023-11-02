@@ -55,7 +55,7 @@ def a(data,n):
     return "找不到該筆資料。"
 print(a(電話區碼,"臺中"))
 
-#----------------
+#---------------- 
 
 print(' '.join([str(i) for i in [int(i) for i in range(1,119)]]))
 
