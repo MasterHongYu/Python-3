@@ -43,9 +43,15 @@ import time
 print(time.ctime(0))
 print(time.time())
 print(time.localtime())'''
-try :
-    a = input()
-    guess = [int(i) for i in list(a) if i != " "]
-    print(guess)
-except :
-    print("aa")
+# try :
+#     a = input()
+#     guess = [int(i) for i in list(a) if i != " "]
+#     print(guess)
+# except :
+#     print("aa")
+t = 0
+for i in range(10):
+    t += 1
+    if t == 5:
+        i += 1
+print(t)
