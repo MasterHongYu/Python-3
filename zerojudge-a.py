@@ -1,8 +1,11 @@
-#a002
-#a = [int(i) for i in input().split()]
-#print(a[0]+a[1])
+# a001. 哈囉
+# print("hello, "+input())
 
-#a003
+# a002. 簡易加法
+# a = [int(i) for i in input().split()]
+# print(a[0]+a[1])
+
+# a003. 兩光法師占卜術
 # Bd = [int(i) for i in input().split()]
 # S = (Bd[0] * 2 + Bd[1]) % 3
 # if S == 0 :
@@ -12,7 +15,7 @@
 # else :
 #     print("大吉")
 
-#a004
+# a004. 文文的求婚
 # def indentify(x):
 #     if (x % 4) == 0:
 #         if (x % 100) != 0 or (x % 400) == 0 :
@@ -24,7 +27,7 @@
 #     except :
 #         break
 
-#a005
+# a005. Eva 的回家作業
 # def S():
 #     sp = [int(i) for i in input().split()]
 #     if (sp[1] / sp[0]) == (sp[2] / sp[1]) :
@@ -35,7 +38,7 @@
 # for j in range(int(input())):
 #     S()
 
-#a006
+# a006. 一元二次方程式
 # S = [int(i) for i in input().split()]
 # if  (S[1] ** 2)-(4 * S[0] * S[2]) < 0 :
 #     print("No real root")
@@ -47,7 +50,7 @@
 #     else :
 #         print(f"Two same roots x={X1}")
 
-#009
+# a009. 解碼器 
 # word = []
 # for i in input():
 #     I = ord(i)
@@ -57,7 +60,7 @@
 #     word.append(chr(I))
 # print("".join(word))
 
-#a010
+# a010. 因數分解
 # a,ans = int(input()),[]
 # b = a
 # c = a
@@ -78,7 +81,7 @@
 # else:
 #     print(" * ".join(ans))
 
-#a013
+# a013. 羅馬數字
 # def transfromNumber(a):
 #     RomeToNumber = {"I":1,"V":5,"X":10,"L":50,"C":100,"D":500,"M":1000}
 #     b,res = [],0
@@ -160,3 +163,95 @@
 #         break 
 #     print("".join( transfromRome( abs( transfromNumber(s[0]) - transfromNumber(s[1]) ) ) ) )
 
+# a015. 矩陣的翻轉
+# def transfromMatrix():
+#     r = [int(i) for i in input().split()]
+#     matrix = [[int(i) for i in input().split()] for j in range(r[0])]
+#     for i in range(r[1]) :
+#         matrixT = []
+#         for j in range(r[0]) :
+#             matrixT.append(matrix[j][i])
+#         print(" ".join([str(k) for k in matrixT]))
+# while True :
+#     try :
+#         transfromMatrix()
+#     except:
+#         break
+
+# a017. 五則運算
+
+# def newfma():
+#     import math
+#     def indentifyOperate(tp):
+#         res,key = int(tp[0]),0
+
+#         for i in range(2):
+#             tp.append("0")
+
+#         for i in range(1,len(tp)-2,2) :
+
+#             if tp[i+2] not in ("*","%","/") and key == 0:
+#                 if tp[i] == "+" :
+#                     res += int(tp[i+1])
+#                 elif tp[i] == "-" :
+#                     res -= int(tp[i+1])
+#                 elif tp[i] == "*" :
+#                     res *= int(tp[i+1])
+#                 elif tp[i] == "%" :
+#                     res %= int(tp[i+1])
+#                 elif tp[i] == "/" :
+#                     res = math.floor(res / (int(tp[i+1])))
+#                 continue
+
+#             elif key == 1 :
+#                 if tp[i] == "*" :
+#                     total *= int(tp[i+1])
+#                 elif tp[i] == "%" :
+#                     total %= int(tp[i+1])
+#                 elif tp[i] == "/" :
+#                     total = math.floor(total / int(tp[i+1]))
+#                 if tp[i+2] not in ("*","%","/") :
+#                     key = 0
+#                 if key == 0:
+#                     if operate == "+" :
+#                         res += total
+#                     elif operate == "-" :
+#                         res -= total
+#                     total = 0
+#                 continue
+
+#             elif (tp[i] in ("*","%","/")) and key == 0:
+#                 if tp[i] == "*" :
+#                     res *= int(tp[i+1])
+#                 elif tp[i] == "%" :
+#                     res %= int(tp[i+1])
+#                 elif tp[i] == "/" :
+#                     res = math.floor(res / int(tp[i+1]))
+#                 continue
+
+#             else :
+#                 operate,key,total = tp[i],1,int(tp[i+1])
+#         return res
+
+
+#     formula = [str(i) for i in input().split()]
+#     while "(" in formula :
+#         for i in range(len(formula)) :
+#             if formula[i] == "(":
+#                 indexStart = i
+#             if formula[i] == ")" :
+#                 indexEnd = i
+#                 break
+#         temporary = []
+#         for i in range(indexStart + 1,indexEnd) :
+#             temporary.append(formula[i])
+#         for i in range(indexEnd - indexStart+1) :
+#             formula.pop(indexStart)
+#         formula.insert(indexStart,indentifyOperate(temporary) )
+#     print(indentifyOperate(formula))   
+
+# while True :
+#     try :
+#         newfma()
+#     except:
+#         break
