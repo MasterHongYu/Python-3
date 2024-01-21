@@ -65,7 +65,7 @@
 # b = a
 # c = a
 # if c > 10000000  :
-#      c = c / 10 * 2
+#      c = c // 10 * 2
 # for i in range(2,round(c/2)+2):
 #     if a % i != 0 : continue
 #     power = 0
@@ -179,7 +179,7 @@
 #         break
 
 # a017. 五則運算
-
+#一、
 # def newfma():
 #     import math
 #     def indentifyOperate(tp):
@@ -255,3 +255,40 @@
 #         newfma()
 #     except:
 #         break
+#二、
+# while True :
+#     try :
+#         print(eval(input().replace("/",'//')))
+#     except :
+#         break
+
+
+# a020. 身分證檢驗
+# def indentity():
+#     number,n = input(),[]
+#     for i in number :
+#         n.append(i)
+#     rigion = {"A":(1,0),'B':(1,1),'C':(1,2),'D':(1,3),'E':(1,4),'F':(1,5),'G':(1,6),'H':(1,7),'I':(3,4),'J':(1,8),'K':(1,9),'L':(2,0),"M":(2,1),"N":(2,2),"O":(3,5),'P':(2,3),"Q":(2,4),"R":(2,5),"S":(2,6),"T":(2,7),"U":(2,8),"V":(2,9),"W":(3,2),"X":(2,0),"Y":(3,1),"Z":(3,3)}
+#     b = rigion[(n[0])][0] + rigion[(n[0])][1] * 9
+#     for i in range(1,9):
+#         b += (int(n[i]) * (9-i))
+#     if ( b + int(n[-1])) % 10 == 0 :
+#         print("real")
+#     else :
+#         print("fake")
+# indentity()       
+
+# a021. 大數運算
+# print(eval(input().replace('/','//')))
+
+# a022. 迴文
+# s,a = input(),[]
+# for i in s:
+#     a.append(i)
+# for i in range((len(a)//2)):
+#     if a[i] !=  a[-i-1]:
+#         print("no")
+#         s = " "
+#         break
+# if s != " ":
+#     print('yes')

@@ -49,9 +49,5 @@ print(time.localtime())'''
 #     print(guess)
 # except :
 #     print("aa")
-t = 0
-for i in range(10):
-    t += 1
-    if t == 5:
-        i += 1
-print(t)
+a = (3,9)
+print(a[0])
