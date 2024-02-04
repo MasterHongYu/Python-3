@@ -179,7 +179,7 @@
 #         break
 
 # a017. 五則運算
-#一、
+# 法一、
 # def newfma():
 #     import math
 #     def indentifyOperate(tp):
@@ -255,7 +255,7 @@
 #         newfma()
 #     except:
 #         break
-#二、
+# 法二、
 # while True :
 #     try :
 #         print(eval(input().replace("/",'//')))
@@ -268,7 +268,7 @@
 #     number,n = input(),[]
 #     for i in number :
 #         n.append(i)
-#     rigion = {"A":(1,0),'B':(1,1),'C':(1,2),'D':(1,3),'E':(1,4),'F':(1,5),'G':(1,6),'H':(1,7),'I':(3,4),'J':(1,8),'K':(1,9),'L':(2,0),"M":(2,1),"N":(2,2),"O":(3,5),'P':(2,3),"Q":(2,4),"R":(2,5),"S":(2,6),"T":(2,7),"U":(2,8),"V":(2,9),"W":(3,2),"X":(2,0),"Y":(3,1),"Z":(3,3)}
+#     rigion = {"A":(1,0),'B':(1,1),'C':(1,2),'D':(1,3),'E':(1,4),'F':(1,5),'G':(1,6),'H':(1,7),'I':(3,4),'J':(1,8),'K':(1,9),'L':(2,0),"M":(2,1),"N":(2,2),"O":(3,5),'P':(2,3),"Q":(2,4),"R":(2,5),"S":(2,6),"T":(2,7),"U":(2,8),"V":(2,9),"W":(3,2),"X":(3,0),"Y":(3,1),"Z":(3,3)}
 #     b = rigion[(n[0])][0] + rigion[(n[0])][1] * 9
 #     for i in range(1,9):
 #         b += (int(n[i]) * (9-i))
@@ -284,7 +284,7 @@
 # a022. 迴文
 # s,a = input(),[]
 # for i in s:
-#     a.append(i)
+#     a.append(i) 
 # for i in range((len(a)//2)):
 #     if a[i] !=  a[-i-1]:
 #         print("no")
@@ -292,3 +292,188 @@
 #         break
 # if s != " ":
 #     print('yes')
+
+# a024. 最大公因數(GCD)
+# def greatestCommonFactor (a,b):
+#     if a % b != 0 :
+#         k = greatestCommonFactor(b,a % b)
+#     else :
+#         k = b
+#     return (k)
+
+# a = [int(i) for i in input().split()]
+# if a[1] > a[0] :
+#     a[0] , a[1] = a[1] , a[0]
+# print(greatestCommonFactor(a[0],a[1]))
+
+# 034. 二進位制轉換
+# 法一
+# def binary():
+#     n,a,k = int(input()),[0],1
+#     if n != 0 :
+#         for i in range(1,n+1):
+#             if i % (2 ** k) == 0:
+#                 k += 1
+#                 for j in range(len(a)) : 
+#                     a[j] = 0
+#                 a.append(0)
+#                 a[0] = 1
+#             else :
+#                 a[-1] += 1
+#             while 2 in a :
+#                 b = a.index(2)
+#                 a[b-1] += 1
+#                 a[b] -= 2
+#     print("".join([str(i) for i in a]))
+# while True:
+#     try :
+#         binary()
+#     except:
+#         break
+# 法二
+# while True:
+#     try :
+#          print(bin(int(input()))[2:])
+#     except:
+#         break
+
+# a038. 數字翻轉
+# def revolve():
+#     n,a,b,k = input(),[],0,0
+#     for i in n:
+#         a.insert(0,i)
+#     if '0' in a :
+#         for i in range(len(a)) :
+#             if int(a[i]) != 0 :
+#                 k += 1
+#                 break
+#             b += 1
+#         for i in range(b) :
+#             if a.count("0") == 1 and k == 0:
+#                 break
+#             a.pop(0)
+            
+#     print(''.join([str(i) for i in a]))
+# revolve()
+
+# a040. 阿姆斯壯數
+# def  Armstrongnumber(a):
+#     b,c = [],0
+#     for i in str(a) :
+#         b.append(int(i))
+#     for i in range(len(b)):
+#         c += b[i] ** len(b)
+#     if c == a :
+#         return (str(a))
+#     return "-1"
+
+# s = [int(i) for i in input().split()]
+# res = []
+# for i in range(s[0],s[1]+1):
+#     p = Armstrongnumber(i)
+#     if int(p) >= 0  :
+#         res.append(p)
+# if len(res) == 0 :
+#     print('none')
+# else:
+#     print(" ".join(res))
+
+# a042. 平面圓形切割
+# while True :
+#     try :
+#         n = int(input())
+#         print(n**2-n+2)
+#     except :
+#         break
+
+# a044. 空間切割
+# 法一(遞迴，但有限制)
+# def a(n,k):
+#     k += int((n**2-n+2)/2)
+#     if n > 0 :
+#         k += a(n-1,0)
+#     return k 
+# while True:
+#     try:
+#         print(a(int(input()),0))
+#     except:
+#         break
+# 法二
+# while True :
+#     try :
+#         n = int(input())
+#         print(int((n**3+5*n+6)/6))
+#     except :
+#         break
+
+# a053. Sagit's 計分程式
+
+# n = int(input())
+
+# if n > 40 :
+#     print(100)
+# elif 21 <= n and n <= 40 :
+#     print(60+n)
+# elif 11 <= n and n <= 20 :
+#     print(40+2*n)
+# else :
+#     print(6*n)
+
+# a054. 電話客服中心
+# rigion = {"A":(1,0),'B':(1,1),'C':(1,2),'D':(1,3),'E':(1,4),'F':(1,5),'G':(1,6),'H':(1,7),'I':(3,4),'J':(1,8),'K':(1,9),'L':(2,0),"M":(2,1),"N":(2,2),"O":(3,5),'P':(2,3),"Q":(2,4),"R":(2,5),"S":(2,6),"T":(2,7),"U":(2,8),"V":(2,9),"W":(3,2),"X":(3,0),"Y":(3,1),"Z":(3,3)}
+# indentify,res = input(),0
+# for i in range(len(indentify)):
+#     res += int(indentify[i]) * (8-i)
+# k = (10 - int(indentify)%10) + 10 - res % 10
+# if k >= 10 :
+#     k %= 10
+# ans = []
+# for key,value in rigion.items() :
+#     if (value[0] + value[1] * 9) % 10 == k :
+#         ans.append(key)
+# print("".join(ans))
+
+# a058. MOD3
+# n,k,kp,kpp = int(input()),0,0,0
+# for i in range(n):
+#     a = int(input())
+#     if a % 3 == 0 :
+#         k += 1
+#     if a % 3 == 1 :
+#         kp += 1
+#     if a % 3 == 2 : 
+#         kpp += 1
+# print(f'{k} {kp} {kpp}')
+
+# a059. 完全平方和
+# n,t = int(input()),0
+# for i in range(n):
+#     t += 1
+#     a,b,res =int(input()),int(input()),0
+#     for j in range(b-a):
+#         k = ( (j+a) ** (1/2) )
+#         if k == round(k):
+#             res += int(j+a)
+#     print(f"Case {t}: {res}")
+
+# a065. 提款卡密碼
+# a,s,ans = input(),[],[]
+# for i in a:
+#     s.append(ord(i))
+# for i in range(len(s)-1) :
+#     ans.append(str(abs(s[i+1]-s[i])))
+# print("".join(ans))
+
+# a104. 排序
+# def a(n):
+#     s,res = [int(i) for i in input().split()],[]
+#     for i in range(n):
+#         res.append(str(min(s)))
+#         s.remove(min(s))
+#     print(" ".join(res))
+
+# while True :
+#     try :
+#         a(int(input()))
+#     except :
+#         break
