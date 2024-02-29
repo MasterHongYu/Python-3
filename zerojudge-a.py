@@ -477,3 +477,37 @@
 #         a(int(input()))
 #     except :
 #         break
+
+# a121. 質數又來囉
+
+
+def is_prime(k):
+    if k < 2 or (k % 2 == 0 and k != 2) or (k % 3 == 0 and k != 3) or (k % 5 == 0 and k != 5) :
+        return False
+    for j in range(2,round(k**(1/2))+1) :
+        if k % j == 0 :
+            return False
+    return True
+
+def main(n,m):
+    s = (m-n)+1
+    for i in range(n,m+1):
+        if is_prime(i) == False :
+            s -= 1
+    return s
+
+
+while True:
+    try :
+        x,y = map(int,input().split())
+        print(main(x,y))
+    except EOFError:
+        break
+
+import time
+start_time = time.time()
+print(main(3,7))
+print(main(6,6))
+print(main(30,50))
+end_time = time.time()
+print(end_time,start_time)
